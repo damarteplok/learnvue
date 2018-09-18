@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Vue Js</title>
+		<link rel="stylesheet" href="style.css">
+       	<script src="vue.js"></script>
+    </head>
+    <body>
+		
+		<div id="app">
+			<button @click="changeLink" >Click to change link</button>
+			<a :href="link">link</a>
+
+			<div 
+				class="demo" 
+				@click="attachedRed = !attachedRed"
+				:class="divClasses"></div>
+			<div class="demo" :class="{red: attachedRed}"></div>
+			<div class="demo" :class="[color, {red: attachedRed}]"></div>
+
+			<hr>
+			<input type="text" v-model="color">
+
+		</div>
+
+		<script>
+			
+		new Vue({
+			el: '#app',
+			data: {
+				link: 'http://google.com',
+				attachedRed: false,
+				color: 'gray'
+			},
+			computed: {
+				divClasses: function() {
+					return {
+						red: this.attachedRed,
+						blue: !this.attachedRed
+					}
+				}
+			},
+			methods: {
+				changeLink: function(){
+					this.link = 'http://wayannurpe.com'
+				}
+			}
+
+
+		});
+
+		</script>
+
+    </body>
+</html>
