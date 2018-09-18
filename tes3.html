@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Vue Js</title>
+       	<script src="vue.js"></script>
+    </head>
+    <body>
+		
+		<div id="app">
+			<input type="text" v-model="name">
+			<p>{{name}}</p>
+			<button type="text" v-on:click="counter++">Increase</button>
+			<button type="text" v-on:click="counter--">Decrease</button>
+			<button type="text" v-on:click="secondCounter++">Increase Second</button>
+			<p>Counter: {{counter}} | {{secondCounter}}</p>
+			<p>Result: {{result()}} | {{output}}</p>
+
+		</div>
+
+		<script>
+			
+		new Vue({
+			el: '#app',
+			data: {
+				name: 'teplok',
+				counter: 0,
+				secondCounter: 0
+			},
+			computed: {
+				output: function() {
+					return this.counter > 5 ? 'greater than 5' : 'smaller than 5'
+				}
+			},
+			watch: {
+				counter: function(value) {
+					var vm = this;
+					setTimeout(function() {
+						vm.counter = 0
+
+					},2000);
+				}
+			},
+			methods: {
+				result: function() {
+					return this.counter > 5 ? 'greater than 5' : 'smaller than 5'
+				}
+			}
+
+
+		});
+
+		</script>
+
+    </body>
+</html>
+
+
